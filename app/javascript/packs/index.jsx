@@ -8,15 +8,13 @@ import PropTypes from 'prop-types'
 import axios from "axios";
 import GoalsForm from "../components/goals/new/GoalsForm"
 import Goals from "../components/goals/index/goals"
-import Goal from "../components/goals/index/goal"
 
 class App extends React.Component {
 
     constructor(){
         super()
         this.state = {
-            goals: [],
-            events: []
+            goals: []
         }
     }
 
