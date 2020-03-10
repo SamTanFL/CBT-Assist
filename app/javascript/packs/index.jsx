@@ -39,7 +39,7 @@ class App extends React.Component {
         }
 
         return(
-            <div>
+            <div className="mt-5">
                 <GoalsForm func={ goalsFormCb } />
                 <button onClick={ ()=>{this.getGoals()} } >Show Goals</button>
                 <Goals goals= { this.state.goals } />
