@@ -6,4 +6,7 @@ Rails.application.routes.draw do
 
     root 'goals#index'
 
+    get '/goals' => 'goals#index'
+    post '/goals' => 'goals#create', as: 'create_goal'
+
 end

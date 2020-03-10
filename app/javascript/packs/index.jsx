@@ -7,23 +7,44 @@ import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import axios from "axios";
 import GoalsForm from "../components/goals/new/GoalsForm"
+import Goals from "../components/goals/index/goals"
+import Goal from "../components/goals/index/goal"
 
 class App extends React.Component {
 
     constructor(){
         super()
         this.state = {
-
+            goals: [],
+            events: []
         }
+    }
+
+    getGoals() {
+        axios.get('/goals.json')
+                .then( (response) => {
+                    let goals = []
+                    const data = response.data
+                    for (const index in data) {
+                        goals.push(data[index])
+                    }
+                    this.setState( { goals } )
+                }).catch( ( error ) => {
+                    console.log( error );
+                } )
     }
 
     render() {
 
+        const goalsFormCb = () => {
+            this.getGoals()
+        }
 
         return(
             <div>
-                TEST
-                <GoalsForm />
+                <GoalsForm func={ goalsFormCb } />
+                <button onClick={ ()=>{this.getGoals()} } >Show Goals</button>
+                <Goals goals= { this.state.goals } />
             </div>
         );
     }
