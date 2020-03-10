@@ -10,10 +10,15 @@ export class Event extends Component {
 
         return(
             <div>
+                <p>TITLE:</p>
                 <p>{ this.props.event.title }</p>
+                <p>Description:</p>
                 <p>{ this.props.event.description }</p>
+                <p>Thoughts:</p>
                 <p>{ this.props.event.thoughts }</p>
+                <p>Feelings:</p>
                 <p>{ this.props.event.feelings }</p>
+                <p>Behaviours:</p>
                 <p>{ this.props.event.behaviours }</p>
             </div>
         );

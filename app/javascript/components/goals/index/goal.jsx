@@ -17,13 +17,9 @@ export class Goal extends Component {
 
     eventsVisibility(){
         if (this.state.visibility == false){
-            axios.get('/events.json')
+            axios.get('/events.json', { params: { goal: this.props.goal.id } })
                 .then( (response) => {
-                    let events = []
-                    const data = response.data
-                    for (const index in data) {
-                        events.push(data[index])
-                    }
+                    let events = response.data
                     this.setState( { events, visibility: true } )
                 }).catch( ( error ) => {
                     console.log( error );

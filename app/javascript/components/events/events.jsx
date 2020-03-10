@@ -6,16 +6,13 @@ export class Events extends Component {
 
     render() {
 
-        console.log("RENDERING EventS")
-        console.log(this.props.Events)
-
-        const EventsEle = this.props.Events.map( Event => {
-            return <Event key={ event.id } event={ Event } />
+        const eventsEle = this.props.events.map( event => {
+            return <Event key={ event.id } event={ event } />
         })
 
         return(
             <div>
-                {EventsEle}
+                {eventsEle}
             </div>
         );
     }

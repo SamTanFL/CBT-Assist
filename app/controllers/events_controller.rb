@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
 
     def index
-        @events = Event.where(user: current_user)
+        @events = Event.where(user: current_user).where(goal: params[:goal])
         if @events.length > 0
             respond_to do |format|
                 format.html
@@ -19,7 +19,6 @@ class EventsController < ApplicationController
         @event = Event.new(event_params)
         @event.user = current_user
         @event.goal = Goal.find(params[:goal])
-        byebug
         if @event.save
             p "saved"
         else
@@ -30,7 +29,7 @@ class EventsController < ApplicationController
     private
 
     def event_params
-        params.require(:event).permit(:title, :description, :thoughts, :feelings, :behaviours, :goal)
+        params.require(:event).permit(:title, :description, :thoughts, :feelings, :behaviours)
     end
 
 end

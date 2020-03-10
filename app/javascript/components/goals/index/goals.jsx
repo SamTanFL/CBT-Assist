@@ -6,9 +6,6 @@ export class Goals extends Component {
 
     render() {
 
-        console.log("RENDERING GOALS")
-        console.log(this.props.goals)
-
         const goalsEle = this.props.goals.map( goal => {
             return <Goal key={ goal.id } goal={ goal } />
         })
