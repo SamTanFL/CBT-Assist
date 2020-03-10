@@ -54,3 +54,9 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "devise", "~> 4.7"
+
+gem "ffaker", "~> 2.13"
+
+gem "react", "~> 0.0.2"
+
+gem 'react-rails'

@@ -2,25 +2,37 @@
 // like app/views/layouts/application.html.erb. All it does is render <div>Hello React</div> at the bottom
 // of the page.
 
-import React from 'react'
+import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
+import axios from "axios";
+import GoalsForm from "../components/goals/new/GoalsForm"
 
-const Hello = props => (
-  <div>Hello {props.name}!</div>
-)
+class App extends React.Component {
 
-Hello.defaultProps = {
-  name: 'David'
+    constructor(){
+        super()
+        this.state = {
+
+        }
+    }
+
+    render() {
+
+
+        return(
+            <div>
+                TEST
+                <GoalsForm />
+            </div>
+        );
+    }
 }
 
-Hello.propTypes = {
-  name: PropTypes.string
-}
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <Hello name="React" />,
+    <App />,
     document.body.appendChild(document.createElement('div')),
   )
 })
