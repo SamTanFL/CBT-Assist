@@ -1,7 +1,11 @@
 class EventsController < ApplicationController
 
     def index
-        @events = Event.where(user: current_user).where(goal: params[:goal])
+        if params[:goal].blank?
+            @events = Event.where(user:current_user)
+        else
+            @events = Event.where(user: current_user).where(goal: params[:goal])
+        end
         if @events.length > 0
             respond_to do |format|
                 format.html

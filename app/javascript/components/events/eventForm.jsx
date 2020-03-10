@@ -35,6 +35,7 @@ export class EventForm extends Component {
             .catch(function (error) {
             console.log(error);
             });
+            this.props.submit()
         this.setState( { title : "", description: "", thoughts: "", feelings: "", behaviours: "" } )
     }
 

@@ -50,8 +50,8 @@ class App extends React.Component {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(
-    <App />,
-    document.body.appendChild(document.createElement('div')),
-  )
+    ReactDOM.render(
+        <App />,
+        document.querySelector(".container").appendChild(document.createElement('div')),
+    )
 })

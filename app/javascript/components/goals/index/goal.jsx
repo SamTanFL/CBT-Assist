@@ -51,8 +51,12 @@ export class Goal extends Component {
         let eventForm
         let cancel
 
+        const hideForm = () => {
+            this.showForm()
+        }
+
         if ( this.state.formVisibility == true ){
-            eventForm = <EventForm goal={ this.props.goal.id } />
+            eventForm = <EventForm goal={ this.props.goal.id } submit={ hideForm } />
             cancel = <button onClick={ ()=>{ this.showForm() } }>Cancel</button>
         } else {
             eventForm = <button onClick={ ()=>{ this.showForm() } }>Add Event</button>
