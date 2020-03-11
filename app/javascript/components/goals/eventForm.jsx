@@ -57,6 +57,7 @@ export class EventForm extends Component {
                 <input type="text-field" placeholder="Behaviours" value={ this.state.behaviours } onChange={ this.handleValueChange } name="behaviours" /><br />
                 <input type="hidden" value={ this.state.goal } name="goal" />
                 <button onClick={ ()=>{ this.submitInput() } }>Submit</button>
+                <button onClick={ ()=>{ this.props.submit() } }>Cancel</button>
             </div>
         );
     }

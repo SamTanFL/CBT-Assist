@@ -38,7 +38,7 @@ export class GoalsForm extends Component {
     render() {
 
         return(
-            <div>
+            <div className="col-5 border border-primary">
                 <label>Create New Goal :</label><br />
                 <input type="text" placeholder="Title" value={ this.state.title } onChange={ this.handleValueChange } name="title" /><br />
                 <label>Description :</label><br />

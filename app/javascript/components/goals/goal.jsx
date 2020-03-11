@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import axios from "axios";
-import Events from "./events/events"
+import Events from "./events"
 import EventForm from "./eventForm"
 
 export class Goal extends Component {
@@ -52,38 +52,24 @@ export class Goal extends Component {
 
         let eventsEle
         let eventForm
-        let cancel
-
-        /*if ( this.state.formVisibility == true ){
-            eventForm = <EventForm goal={ this.props.goal.id } submit={ hideForm } />
-            cancel = <button onClick={ ()=>{ this.showForm() } }>Cancel</button>
-        } else {
-            eventForm = <button onClick={ ()=>{ this.showForm() } }>Add Event</button>
-            cancel = undefined
-        }*/
 
         if ( this.state.visibility == true && this.state.events.length > 0 ){
             eventsEle = <Events events={ this.state.events } />
             if ( this.state.formVisibility == true ) {
                 eventForm = <EventForm goal={ this.props.goal.id } submit={ hideForm } />
-                cancel = <button onClick={ ()=>{ this.showForm() } }>Cancel</button>
             } else {
                 eventForm = <button onClick={ ()=>{ this.showForm() } }>Add Event</button>
-                cancel = undefined
             }
         } else if ( this.state.visibility == true && this.state.events.length == 0 ){
             eventsEle = <p>No Events Yet</p>
             if ( this.state.formVisibility == true ) {
                 eventForm = <EventForm goal={ this.props.goal.id } submit={ hideForm } />
-                cancel = <button onClick={ ()=>{ this.showForm() } }>Cancel</button>
             } else {
                 eventForm = <button onClick={ ()=>{ this.showForm() } }>Add Event</button>
-                cancel = undefined
             }
         } else {
             eventsEle = undefined
             eventForm = undefined
-            cancel = undefined
         }
 
         return(
@@ -93,7 +79,6 @@ export class Goal extends Component {
                     <p>{ this.props.goal.description }</p>
                 </div>
                 { eventForm }
-                { cancel }
                 { eventsEle }
             </div>
         );
