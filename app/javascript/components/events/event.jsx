@@ -9,7 +9,7 @@ export class Event extends Component {
         console.log("event is RENDERING")
 
         return(
-            <div>
+            <div className="border border-primary">
                 <p>TITLE:</p>
                 <p>{ this.props.event.title }</p>
                 <p>Description:</p>

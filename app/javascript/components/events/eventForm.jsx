@@ -44,7 +44,7 @@ export class EventForm extends Component {
         console.log("EVENT FORM IS RENDERING")
 
         return(
-            <div>
+            <div className="border border-primary">
                 <label>Create New Event :</label><br />
                 <input type="text" placeholder="Title" value={ this.state.title } onChange={ this.handleValueChange } name="title" /><br />
                 <label>Description :</label><br />

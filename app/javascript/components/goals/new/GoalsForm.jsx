@@ -31,6 +31,10 @@ export class GoalsForm extends Component {
         this.props.func2()
     }
 
+    cancel(){
+        this.props.func1()
+    }
+
     render() {
 
         return(
@@ -40,6 +44,7 @@ export class GoalsForm extends Component {
                 <label>Description :</label><br />
                 <input type="text-field" placeholder="Description" value={ this.state.description } onChange={ this.handleValueChange } name="description" />
                 <button onClick={ ()=>{ this.submitInput() } }>Submit</button>
+                <button onClick={ ()=>{ this.cancel() } }>Cancel</button>
             </div>
         );
     }

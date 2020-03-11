@@ -15,6 +15,16 @@ export class Goal extends Component {
         }
     }
 
+    componentDidMount(){
+        axios.get('/events.json', { params: { goal: this.props.goal.id } })
+                .then( (response) => {
+                    let events = response.data
+                    this.setState( { events } )
+                }).catch( ( error ) => {
+                    console.log( error );
+                } )
+    }
+
     eventsVisibility(){
         if (this.state.visibility == false){
             axios.get('/events.json', { params: { goal: this.props.goal.id } })
@@ -25,7 +35,7 @@ export class Goal extends Component {
                     console.log( error );
                 } )
         } else {
-            this.setState( { events: [], visibility: false })
+            this.setState( { visibility: false })
         }
     }
 
@@ -36,40 +46,55 @@ export class Goal extends Component {
 
     render() {
 
-        let eventsEle
-
-        if ( this.state.visibility == true && this.state.events.length > 0 ){
-            eventsEle = <Events events={ this.state.events } />
-        } else if ( this.state.visibility == true && this.state.events.length == 0 ){
-            eventsEle = <p>No Events Yet</p>
-        } else {
-            eventsEle = undefined
-        }
-
-        let eventForm
-        let cancel
-
         const hideForm = () => {
             this.showForm()
         }
 
-        if ( this.state.formVisibility == true ){
+        let eventsEle
+        let eventForm
+        let cancel
+
+        /*if ( this.state.formVisibility == true ){
             eventForm = <EventForm goal={ this.props.goal.id } submit={ hideForm } />
             cancel = <button onClick={ ()=>{ this.showForm() } }>Cancel</button>
         } else {
             eventForm = <button onClick={ ()=>{ this.showForm() } }>Add Event</button>
             cancel = undefined
+        }*/
+
+        if ( this.state.visibility == true && this.state.events.length > 0 ){
+            eventsEle = <Events events={ this.state.events } />
+            if ( this.state.formVisibility == true ) {
+                eventForm = <EventForm goal={ this.props.goal.id } submit={ hideForm } />
+                cancel = <button onClick={ ()=>{ this.showForm() } }>Cancel</button>
+            } else {
+                eventForm = <button onClick={ ()=>{ this.showForm() } }>Add Event</button>
+                cancel = undefined
+            }
+        } else if ( this.state.visibility == true && this.state.events.length == 0 ){
+            eventsEle = <p>No Events Yet</p>
+            if ( this.state.formVisibility == true ) {
+                eventForm = <EventForm goal={ this.props.goal.id } submit={ hideForm } />
+                cancel = <button onClick={ ()=>{ this.showForm() } }>Cancel</button>
+            } else {
+                eventForm = <button onClick={ ()=>{ this.showForm() } }>Add Event</button>
+                cancel = undefined
+            }
+        } else {
+            eventsEle = undefined
+            eventForm = undefined
+            cancel = undefined
         }
 
         return(
-            <div>
+            <div className="border border-primary">
                 <div onClick={ ()=>{ this.eventsVisibility() } }>
                     <p>{ this.props.goal.title }</p>
                     <p>{ this.props.goal.description }</p>
-                    { eventsEle }
                 </div>
                 { eventForm }
                 { cancel }
+                { eventsEle }
             </div>
         );
     }
