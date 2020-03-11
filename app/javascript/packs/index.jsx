@@ -7,6 +7,7 @@ import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import axios from "axios";
 import Goals from "../components/goals/goals"
+import Events from "../components/events/events"
 
 class App extends React.Component {
 
@@ -45,15 +46,30 @@ class App extends React.Component {
                 } )
     }
 
+    getEvents() {
+        axios.get('/events.json')
+                .then( (response) => {
+                    const data = response.data
+                    this.setState( { events: data } )
+                }).catch( ( error ) => {
+                    console.log( error );
+                } )
+    }
+
     render() {
 
         const goalsCb = () => {
             this.getGoals()
         }
 
+        const eventsCb = () => {
+            this.getEvents()
+        }
+
         return(
             <div className="mt-5 row">
                 <Goals goals= { this.state.goals } getGoals={ goalsCb } />
+                <Events events = { this.state.events } getEvents={ eventsCb } />
             </div>
         );
     }
