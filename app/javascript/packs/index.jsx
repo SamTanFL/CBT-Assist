@@ -6,7 +6,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import axios from "axios";
-import Goals from "../components/goals/index/goals"
+import Goals from "./goals"
 
 class App extends React.Component {
 
@@ -52,7 +52,7 @@ class App extends React.Component {
         }
 
         return(
-            <div className="mt-5">
+            <div className="mt-5 row">
                 <Goals goals= { this.state.goals } getGoals={ goalsCb } />
             </div>
         );

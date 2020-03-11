@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import axios from "axios";
-import Events from "../../events/events"
-import EventForm from "../../events/eventForm"
+import Events from "./events/events"
+import EventForm from "./eventForm"
 
 export class Goal extends Component {
 

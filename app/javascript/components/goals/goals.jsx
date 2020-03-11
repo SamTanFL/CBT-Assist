@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import Goal from './goal'
-import GoalsForm from '../new/GoalsForm'
+import GoalsForm from './GoalsForm'
 
 export class Goals extends Component {
 
