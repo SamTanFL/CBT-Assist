@@ -6,7 +6,6 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import axios from "axios";
-import GoalsForm from "../components/goals/new/GoalsForm"
 import Goals from "../components/goals/index/goals"
 
 class App extends React.Component {
@@ -14,19 +13,33 @@ class App extends React.Component {
     constructor(){
         super()
         this.state = {
-            goals: []
+            goals: [],
+            events: []
         }
+    }
+
+    componentDidMount(){
+        axios.get('/goals.json')
+                .then( (response) => {
+                    const data = response.data
+                    this.setState( { goals: data } )
+                }).catch( ( error ) => {
+                    console.log( error );
+                } )
+        axios.get('/events.json')
+                .then( (response) => {
+                    const data = response.data
+                    this.setState( { events: data } )
+                }).catch( ( error ) => {
+                    console.log( error );
+                } )
     }
 
     getGoals() {
         axios.get('/goals.json')
                 .then( (response) => {
-                    let goals = []
                     const data = response.data
-                    for (const index in data) {
-                        goals.push(data[index])
-                    }
-                    this.setState( { goals } )
+                    this.setState( { goals: data } )
                 }).catch( ( error ) => {
                     console.log( error );
                 } )
@@ -34,15 +47,13 @@ class App extends React.Component {
 
     render() {
 
-        const goalsFormCb = () => {
+        const goalsCb = () => {
             this.getGoals()
         }
 
         return(
             <div className="mt-5">
-                <GoalsForm func={ goalsFormCb } />
-                <button onClick={ ()=>{this.getGoals()} } >Show Goals</button>
-                <Goals goals= { this.state.goals } />
+                <Goals goals= { this.state.goals } getGoals={ goalsCb } />
             </div>
         );
     }

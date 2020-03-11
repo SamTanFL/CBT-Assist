@@ -19,7 +19,6 @@ export class GoalsForm extends Component {
 
     submitInput(){
         let data = this.state
-        this.props.func(data)
         axios.post( '/goals', data, { headers: { 'X-Transaction': 'POST Example', 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') } } )
             .then(function (response) {
             console.log(response);
@@ -28,6 +27,8 @@ export class GoalsForm extends Component {
             console.log(error);
             });
         this.setState( { title : "", description: "" } )
+        this.props.func1()
+        this.props.func2()
     }
 
     render() {

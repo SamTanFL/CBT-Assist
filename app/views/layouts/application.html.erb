@@ -13,17 +13,17 @@
     </head>
 
     <body>
-        <nav class="navbar navbar-expand navbar-dark fixed-top">
+        <nav class="navbar navbar-expand navbar-dark bg-dark fixed-top">
             <p class="navbar-brand ml-5">CBT Assist</p>
             <form class="form-inline ml-auto">
                 <% if user_signed_in? %>
-                    <%= link_to 'Logout', destroy_user_session_url, method: :delete, class: "btn btn-outline-primary text-light my-2 my-sm-0 mr-3" %>
+                    <%= link_to 'Logout', destroy_user_session_url, method: :delete, class: "btn btn-outline-danger text-light my-2 my-sm-0 mr-3" %>
                 <% else %>
                     <a class='btn btn-outline-primary text-light my-2 my-sm-0 mr-3' type='submit' href="/users/sign_in">Login</a>
                 <% end %>
             </form>
         </nav>
-        <div class="container">
+        <div class="container pt-4 mt-2">
             <%= yield %>
         </div>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

@@ -11,6 +11,6 @@ Rails.application.routes.draw do
     get '/events' => 'events#index'
     post '/events' => 'events#create', as: 'create_event'
 
-    get '/' => 'goals#index'
+    get '*' => 'goals#index'
 
 end

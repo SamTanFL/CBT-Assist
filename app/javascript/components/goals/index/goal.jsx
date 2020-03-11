@@ -36,8 +36,6 @@ export class Goal extends Component {
 
     render() {
 
-        console.log("Goal is RENDERING")
-
         let eventsEle
 
         if ( this.state.visibility == true && this.state.events.length > 0 ){
