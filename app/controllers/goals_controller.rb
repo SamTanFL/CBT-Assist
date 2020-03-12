@@ -18,6 +18,11 @@ class GoalsController < ApplicationController
         end
     end
 
+    def update
+        @goal = Event.find(params[:id])
+        @goal.update(goal_params)
+    end
+
     private
 
     def goal_params

@@ -1,25 +1,16 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import axios from "axios";
 
 export class Event extends Component {
 
     render() {
 
-        console.log("event is RENDERING")
-
         return(
-            <div className="border border-primary">
-                <p>TITLE:</p>
+            <div className="border border-primary p-3" onClick={ ()=>{ this.props.sendEvent( this.props.event ) } } >
+                <p>Event:</p>
                 <p>{ this.props.event.title }</p>
                 <p>Description:</p>
                 <p>{ this.props.event.description }</p>
-                <p>Thoughts:</p>
-                <p>{ this.props.event.thoughts }</p>
-                <p>Feelings:</p>
-                <p>{ this.props.event.feelings }</p>
-                <p>Behaviours:</p>
-                <p>{ this.props.event.behaviours }</p>
             </div>
         );
     }

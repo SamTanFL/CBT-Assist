@@ -9,13 +9,15 @@ import axios from "axios";
 import Goals from "../components/goals/goals"
 import Events from "../components/events/events"
 
+
 class App extends React.Component {
 
     constructor(){
         super()
         this.state = {
             goals: [],
-            events: []
+            events: [],
+            event: undefined
         }
     }
 
@@ -24,13 +26,6 @@ class App extends React.Component {
                 .then( (response) => {
                     const data = response.data
                     this.setState( { goals: data } )
-                }).catch( ( error ) => {
-                    console.log( error );
-                } )
-        axios.get('/events.json')
-                .then( (response) => {
-                    const data = response.data
-                    this.setState( { events: data } )
                 }).catch( ( error ) => {
                     console.log( error );
                 } )
@@ -46,30 +41,26 @@ class App extends React.Component {
                 } )
     }
 
-    getEvents() {
-        axios.get('/events.json')
-                .then( (response) => {
-                    const data = response.data
-                    this.setState( { events: data } )
-                }).catch( ( error ) => {
-                    console.log( error );
-                } )
+    setEvent(event) {
+        this.setState( { event } )
+    }
+
+    clearEvent() {
+        this.setState( { event: undefined } )
     }
 
     render() {
 
-        const goalsCb = () => {
-            this.getGoals()
-        }
+        const goalsCb = () => this.getGoals()
 
-        const eventsCb = () => {
-            this.getEvents()
-        }
+        const eventLifter = (event) => this.setEvent(event)
+
+        const eventClearer = () => this.clearEvent()
 
         return(
             <div className="mt-5 row">
-                <Goals goals= { this.state.goals } getGoals={ goalsCb } />
-                <Events events = { this.state.events } getEvents={ eventsCb } />
+                <Goals goals= { this.state.goals } getGoals={ goalsCb } sendEvent={ eventLifter } />
+                <Events events= { this.state.events } event= { this.state.event } eventClearer={ eventClearer } />
             </div>
         );
     }

@@ -11,8 +11,7 @@ export class EventForm extends Component {
             thoughts: "",
             feelings: "",
             behaviours: "",
-            goal: ""
-
+            id: ""
         }
         this.handleValueChange = this.handleValueChange.bind(this);
     }
@@ -22,25 +21,34 @@ export class EventForm extends Component {
         this.setState( { [ valueName ] : event.target.value } );
     }
 
+    componentDidMount(){
+        const event = this.props.event
+        this.setState({
+            title: event.title,
+            description: event.description,
+            thoughts: event.thoughts,
+            feelings: event.feelings,
+            behaviours: event.behaviours,
+            id: event.id
+        })
+    }
+
     submitInput(){
         let goal = this.props.goal
         this.state.goal = goal
         let data = this.state
         console.log(data)
-        axios.post( '/events', data, { headers: { 'X-Transaction': 'POST Example', 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') } } )
+        axios.patch( '/events', data, { headers: { 'X-Transaction': 'POST Example', 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') } } )
             .then(function (response) {
             console.log(response);
             })
             .catch(function (error) {
             console.log(error);
             });
-            this.props.submit()
-        this.setState( { title : "", description: "", thoughts: "", feelings: "", behaviours: "" } )
+        this.props.editing()
     }
 
     render() {
-
-        console.log("EVENT FORM IS RENDERING")
 
         return(
             <div className="border border-primary p-3">
@@ -54,9 +62,9 @@ export class EventForm extends Component {
                 <input type="text-field" placeholder="Feelings" value={ this.state.feelings } onChange={ this.handleValueChange } name="feelings" /><br />
                 <label>Behaviours :</label><br />
                 <input type="text-field" placeholder="Behaviours" value={ this.state.behaviours } onChange={ this.handleValueChange } name="behaviours" /><br />
-                <input type="hidden" value={ this.state.goal } name="goal" />
+                <input type="hidden" value={ this.state.id } name="id" />
                 <button onClick={ ()=>{ this.submitInput() } }>Submit</button>
-                <button onClick={ ()=>{ this.props.submit() } }>Cancel</button>
+                <button onClick={ ()=>{ this.props.editing() } }>Cancel</button>
             </div>
         );
     }
