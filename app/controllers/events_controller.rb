@@ -32,6 +32,7 @@ class EventsController < ApplicationController
     end
 
     def delete
+        byebug
         @event = Event.find(params[:id])
         @event.destory
     end
@@ -40,6 +41,10 @@ class EventsController < ApplicationController
 
     def event_params
         params.require(:event).permit(:title, :description, :thoughts, :feelings, :behaviours, :id)
+    end
+
+    def del_params
+        params.require(:event).permit(:id)
     end
 
 end

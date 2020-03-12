@@ -23,7 +23,18 @@ export class Event extends Component {
                 console.log( error );
             } )
         }
-        setTimeout(function(){axiosFunc()}, 500)
+        setTimeout(function(){axiosFunc()}, 100)
+    }
+
+    deleteEvent(){
+        axios.delete( '/events', { params: { id: this.state.event.id } }, { headers: { 'X-Transaction': 'DELETE Example', 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') } } )
+            .then(function (response) {
+            console.log(response);
+            })
+            .catch(function (error) {
+            console.log(error);
+            });
+        this.props.eventClearer()
     }
 
     render() {
@@ -39,7 +50,7 @@ export class Event extends Component {
                 <p>{ this.state.event.feelings }</p>
                 <p>Behaviours:</p><p>{ this.state.event.behaviours }</p>
                 <button onClick={()=>{ this.props.editing() } } >Edit</button>
-                <button>Delete</button>
+                <button onClick={ ()=>{ this.deleteEvent() } } >Delete</button>
             </div>
         );
     }
