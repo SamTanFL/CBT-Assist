@@ -49,12 +49,12 @@ export class Goals extends Component {
             goalsForm = undefined
         } else {
             if ( this.state.display.goalsForm == false ) {
-                    goalsForm = <button onClick={ ()=>{ this.displayForm() } }>Add Goal</button>
+                    goalsForm = <button className="mb-1 ml-1" onClick={ ()=>{ this.displayForm() } }>+</button>
             } else {
                     goalsForm = <GoalsForm func1={ passingFunc1 } func2={ this.props.getGoals } />
             }
             goalsEle = this.state.goals.map( goal => {
-            return <Goal key={ goal.id } goal={ goal } sendEvent={ this.props.sendEvent } />
+            return <Goal key={ goal.id } goal={ goal } sendEvent={ this.props.sendEvent } deleteGoal={ this.props.deleteGoal } />
             })
         }
 

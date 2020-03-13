@@ -43,6 +43,18 @@ export class Goal extends Component {
         this.setState( { formVisibility: !this.state.formVisibility } )
     }
 
+    deleteGoal(){
+        axios.delete( '/goals', { params: { id: this.props.goal.id } } )
+            .then(function (response) {
+            console.log(response);
+            })
+            .catch(function (error) {
+            console.log(error);
+            });
+        const refresh = () => this.props.deleteGoal()
+        setTimeout(function(){refresh()}, 100)
+    }
+
 
     render() {
 
@@ -74,6 +86,7 @@ export class Goal extends Component {
 
         return(
             <div className="border-top border-primary">
+                <button className="float-right mr-1 mt-1" onClick={ ()=>{ this.deleteGoal() } } >Del</button>
                 <div className="p-3" onClick={ ()=>{ this.eventsVisibility() } }>
                     <p>Goal :</p>
                     <p>{ this.props.goal.title }</p>

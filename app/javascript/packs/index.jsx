@@ -32,6 +32,7 @@ class App extends React.Component {
     }
 
     getGoals() {
+        console.log("I'M HAPPENING")
         axios.get('/goals.json')
                 .then( (response) => {
                     const data = response.data
@@ -57,9 +58,11 @@ class App extends React.Component {
 
         const eventClearer = () => this.clearEvent()
 
+        const deleteGoal = () => this.getGoals()
+
         return(
             <div className="mt-5 row">
-                <Goals goals= { this.state.goals } getGoals={ goalsCb } sendEvent={ eventLifter } />
+                <Goals goals= { this.state.goals } getGoals={ goalsCb } sendEvent={ eventLifter } deleteGoal={ deleteGoal } />
                 <Events events= { this.state.events } event= { this.state.event } eventClearer={ eventClearer } />
             </div>
         );

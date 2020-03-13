@@ -1,5 +1,7 @@
 class GoalsController < ApplicationController
 
+    protect_from_forgery :except => [:destroy]
+
     def index
         if !current_user.nil?
             @goals = Goal.where(user: current_user)
@@ -23,8 +25,13 @@ class GoalsController < ApplicationController
     end
 
     def update
-        @goal = Event.find(params[:id])
+        @goal = Goal.find(params[:id])
         @goal.update(goal_params)
+    end
+
+    def delete
+        @goal = Goal.find(params[:id])
+        @goal.destroy
     end
 
     private
