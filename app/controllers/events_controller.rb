@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
 
+    protect_from_forgery :except => [:destroy]
+
     def index
         if params.has_key?(:id)
             @events = Event.find(params[:id])
@@ -32,9 +34,8 @@ class EventsController < ApplicationController
     end
 
     def delete
-        byebug
         @event = Event.find(params[:id])
-        @event.destory
+        @event.destroy
     end
 
     private
@@ -48,13 +49,3 @@ class EventsController < ApplicationController
     end
 
 end
-
-=begin
-        if params[:id].blank? && params[:goal].blank?
-            @events = Event.where(user:current_user)
-        elsif params[:goal].blank?
-            @events = Event.find(params[:id])
-        else
-            @events = Event.where(user: current_user).where(goal: params[:goal])
-        end
-=end

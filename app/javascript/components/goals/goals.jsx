@@ -59,8 +59,8 @@ export class Goals extends Component {
         }
 
         return(
-            <div className="col-5 border border-primary p-3">
-                <h1><span onClick={ ()=>{ this.displayGoals() } } >Goals</span></h1>
+            <div className="col-5 border border-primary p-0">
+                <h1 className="p-3" ><span onClick={ ()=>{ this.displayGoals() } } >Goals</span></h1>
                 {goalsForm}
                 {goalsEle}
             </div>

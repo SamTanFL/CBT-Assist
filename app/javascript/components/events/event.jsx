@@ -27,7 +27,7 @@ export class Event extends Component {
     }
 
     deleteEvent(){
-        axios.delete( '/events', { params: { id: this.state.event.id } }, { headers: { 'X-Transaction': 'DELETE Example', 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') } } )
+        axios.delete( '/events', { params: { id: this.state.event.id } }, { headers: { 'X-Transaction': 'POST Example', 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') } } )
             .then(function (response) {
             console.log(response);
             })

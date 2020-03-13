@@ -1,10 +1,14 @@
 class GoalsController < ApplicationController
 
     def index
-        @goals = Goal.where(user: current_user)
-         respond_to do |format|
-            format.html
-            format.json { render json: @goals }
+        if !current_user.nil?
+            @goals = Goal.where(user: current_user)
+             respond_to do |format|
+                format.html
+                format.json { render json: @goals }
+            end
+        else
+            @user = false
         end
     end
 

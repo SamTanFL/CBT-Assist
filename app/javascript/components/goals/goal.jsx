@@ -73,9 +73,11 @@ export class Goal extends Component {
         }
 
         return(
-            <div className="border border-primary p-3">
-                <div onClick={ ()=>{ this.eventsVisibility() } }>
+            <div className="border-top border-primary">
+                <div className="p-3" onClick={ ()=>{ this.eventsVisibility() } }>
+                    <p>Goal :</p>
                     <p>{ this.props.goal.title }</p>
+                    <p>Description :</p>
                     <p>{ this.props.goal.description }</p>
                 </div>
                 { eventForm }
