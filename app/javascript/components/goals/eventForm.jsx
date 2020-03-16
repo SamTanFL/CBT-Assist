@@ -43,20 +43,21 @@ export class EventForm extends Component {
         console.log("EVENT FORM IS RENDERING")
 
         return(
-            <div className="border border-primary p-3">
-                <label>Create New Event :</label><br />
-                <input type="text" placeholder="Title" value={ this.state.title } onChange={ this.handleValueChange } name="title" /><br />
+            <div className="border-top border-secondary rounded p-3 col-12">
+                <h3>Create New Event</h3><br />
+                <label>Title :</label><br />
+                <input class ="rounded" class ="rounded" type="text" placeholder="Title" value={ this.state.title } onChange={ this.handleValueChange } name="title" /><br />
                 <label>Description :</label><br />
-                <input type="text-field" placeholder="Description" value={ this.state.description } onChange={ this.handleValueChange } name="description" /><br />
+                <input class ="rounded" type="text-field" placeholder="Description" value={ this.state.description } onChange={ this.handleValueChange } name="description" /><br />
                 <label>Thoughts :</label><br />
-                <input type="text-field" placeholder="Thoughts" value={ this.state.thoughts } onChange={ this.handleValueChange } name="thoughts" /><br />
+                <input class ="rounded" type="text-field" placeholder="Thoughts" value={ this.state.thoughts } onChange={ this.handleValueChange } name="thoughts" /><br />
                 <label>Feelings :</label><br />
-                <input type="text-field" placeholder="Feelings" value={ this.state.feelings } onChange={ this.handleValueChange } name="feelings" /><br />
+                <input class ="rounded" type="text-field" placeholder="Feelings" value={ this.state.feelings } onChange={ this.handleValueChange } name="feelings" /><br />
                 <label>Behaviours :</label><br />
-                <input type="text-field" placeholder="Behaviours" value={ this.state.behaviours } onChange={ this.handleValueChange } name="behaviours" /><br />
+                <input class ="rounded" type="text-field" placeholder="Behaviours" value={ this.state.behaviours } onChange={ this.handleValueChange } name="behaviours" /><br />
                 <input type="hidden" value={ this.state.goal } name="goal" />
-                <button onClick={ ()=>{ this.submitInput() } }>Submit</button>
-                <button onClick={ ()=>{ this.props.submit() } }>Cancel</button>
+                <button class="mt-2" onClick={ ()=>{ this.submitInput() } }>Submit</button>
+                <button class="mt-2" onClick={ ()=>{ this.props.submit() } }>Cancel</button>
             </div>
         );
     }

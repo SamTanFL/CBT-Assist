@@ -70,14 +70,14 @@ export class Goal extends Component {
             if ( this.state.formVisibility == true ) {
                 eventForm = <EventForm goal={ this.props.goal.id } submit={ hideForm } />
             } else {
-                eventForm = <button onClick={ ()=>{ this.showForm() } }>+</button>
+                eventForm = <button class="m-2" onClick={ ()=>{ this.showForm() } }>+</button>
             }
         } else if ( this.state.visibility == true && this.state.events.length == 0 ){
             eventsEle = <p>No Events Yet</p>
             if ( this.state.formVisibility == true ) {
                 eventForm = <EventForm goal={ this.props.goal.id } submit={ hideForm } />
             } else {
-                eventForm = <button onClick={ ()=>{ this.showForm() } }>+</button>
+                eventForm = <button class="m-2" onClick={ ()=>{ this.showForm() } }>+</button>
             }
         } else {
             eventsEle = undefined
@@ -85,8 +85,8 @@ export class Goal extends Component {
         }
 
         return(
-            <div className="border-top border-primary">
-                <button className="float-right mr-1 mt-1" onClick={ ()=>{ this.deleteGoal() } } >Del</button>
+            <div className="border-top border-secondary bg-light rounded">
+                <span className="float-right border rounded p-2 bg-white mr-1 mt-1" onClick={ ()=>{ this.deleteGoal() } } >Del</span>
                 <div className="p-3" onClick={ ()=>{ this.eventsVisibility() } }>
                     <p>Goal :</p>
                     <p>{ this.props.goal.title }</p>

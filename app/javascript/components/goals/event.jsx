@@ -6,8 +6,8 @@ export class Event extends Component {
     render() {
 
         return(
-            <div className="border-top border-primary p-3" onClick={ ()=>{ this.props.sendEvent( this.props.event ) } } >
-                <p>Event:</p>
+            <div className="border-top border-secondary p-3 rounded" onClick={ ()=>{ this.props.sendEvent( this.props.event ) } } >
+                <h3>Event:</h3>
                 <p>{ this.props.event.title }</p>
                 <p>Description:</p>
                 <p>{ this.props.event.description }</p>

@@ -40,7 +40,7 @@ export class Event extends Component {
     render() {
 
         return(
-            <div className="border border-primary p-3">
+            <div className="border border-secondary rounded p-3">
                 <button className="float-right" onClick={ ()=>{ this.props.eventClearer() } } >X</button>
                 <p>Event:</p>
                 <p>{ this.state.event.title }</p>

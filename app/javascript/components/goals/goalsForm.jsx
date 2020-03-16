@@ -38,11 +38,11 @@ export class GoalsForm extends Component {
     render() {
 
         return(
-            <div className="col-5 border border-primary p-3">
+            <div className="col border-top border-secondary p-3 form-group">
                 <label>Create New Goal :</label><br />
-                <input type="text" placeholder="Title" value={ this.state.title } onChange={ this.handleValueChange } name="title" /><br />
+                <input className="form-control" type="text" placeholder="Title" value={ this.state.title } onChange={ this.handleValueChange } name="title" /><br />
                 <label>Description :</label><br />
-                <input type="text-field" placeholder="Description" value={ this.state.description } onChange={ this.handleValueChange } name="description" />
+                <textarea className="form-control" type="textarea" rows="3" placeholder="Description" value={ this.state.description } onChange={ this.handleValueChange } name="description"></textarea><br />
                 <button onClick={ ()=>{ this.submitInput() } }>Submit</button>
                 <button onClick={ ()=>{ this.cancel() } }>Cancel</button>
             </div>

@@ -45,11 +45,11 @@ export class Goals extends Component {
         let goalsEle
 
         if ( this.state.display.goals == false ) {
-            goalsEle = undefined
+            goalsEle = <p className="ml-2" >^ Click to Show Your Goals</p>
             goalsForm = undefined
         } else {
             if ( this.state.display.goalsForm == false ) {
-                    goalsForm = <button className="mb-1 ml-1" onClick={ ()=>{ this.displayForm() } }>+</button>
+                    goalsForm = <span className="border-top border-left border-right border-dark m-2 p-1 rounded bg-light" onClick={ ()=>{ this.displayForm() } }>Add Goal</span>
             } else {
                     goalsForm = <GoalsForm func1={ passingFunc1 } func2={ this.props.getGoals } />
             }
@@ -59,7 +59,7 @@ export class Goals extends Component {
         }
 
         return(
-            <div className="col-5 border border-primary p-0">
+            <div className="col-5 border bg-light border-secondary rounded p-0 goals">
                 <h1 className="p-3" ><span onClick={ ()=>{ this.displayGoals() } } >Goals</span></h1>
                 {goalsForm}
                 {goalsEle}

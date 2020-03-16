@@ -42,7 +42,7 @@ export class Events extends Component {
         }
 
         return(
-            <div className="col-5 border border-primary ml-1 p-3">
+            <div className="col-5 border border-secondary rounded ml-1 p-3">
                 <h1>Events</h1>
                 { eventElement }
             </div>
